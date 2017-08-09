@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <sources>
+	<source>
+	    <request method="GET">http://api.best-proxies.ru/proxylist.txt</request>
+	    <parameters>
+		<parameter name="key">your API key</parameter>
+		<parameter name="type">https</parameter>
+		<parameter name="response">1500</parameter>
+		<parameter name="level">1,2</parameter>
+		<parameter name="limit">0</parameter>
+	    </parameters>
+	</source>
+    </sources>
+    <delimiter>/\n/ui</delimiter>
+    <output parallels="1">your_proxy_grabber_container</output>
+</config>

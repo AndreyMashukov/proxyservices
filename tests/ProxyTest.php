@@ -28,7 +28,23 @@ class ProxyTest extends TestCase
 		$this->assertEquals($types[$json->type], $proxy->type);
 		$this->assertTrue($proxy->validate());
 		$this->assertEquals(json_encode($json), (string) $proxy);
+
+
 	    } //end testShouldConstructFromJson()
+
+
+	/**
+	 * Should validate invalid proxy
+	 *
+	 * @return void
+	 */
+
+	public function testShouldValidateInvalidProxy()
+	    {
+		$json  = json_decode(file_get_contents(__DIR__ . "/datasets/invalid.json"));
+		$proxy = new Proxy($json);
+		$this->assertFalse($proxy->validate());
+	    } //end testShouldValidateInvalidProxy()
 
 
     } //end class

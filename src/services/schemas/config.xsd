@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+   <xs:simpleType name="DelimiterType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="/.+/ui"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="MethodType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GET"/>
+      <xs:enumeration value="POST"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="RequestType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="method" type="MethodType" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="ParameterType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="OutputType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="parallels" type="xs:integer" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="ParametersType">
+    <xs:sequence>
+      <xs:element name="parameter" type="ParameterType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SourceType">
+    <xs:sequence>
+      <xs:element name="request"    type="RequestType"    minOccurs="1" maxOccurs="1"/>
+      <xs:element name="parameters" type="ParametersType" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SourcesType">
+    <xs:sequence>
+      <xs:element name="source" type="SourceType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ConfigType">
+    <xs:sequence>
+      <xs:element name="sources"   type="SourcesType"   minOccurs="1" maxOccurs="1"/>
+      <xs:element name="delimiter" type="DelimiterType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="output"    type="OutputType"    minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="config" type="ConfigType"/>
+</xs:schema>

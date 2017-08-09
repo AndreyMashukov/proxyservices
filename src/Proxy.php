@@ -59,6 +59,7 @@ class Proxy
 			  "SOCKS4" => CURLPROXY_SOCKS4,
 			  "SOCKS5" => CURLPROXY_SOCKS5,
 			  "HTTP"   => CURLPROXY_HTTP,
+			  "HTTPS"  => CURLPROXY_HTTP,
 			 );
 
 		return $types[$type];

@@ -14,16 +14,24 @@
     "autoload" : {
         "psr-4" : {
             "AM\\": ["src"],
-            "AM\\ProxyServices\\": ["src"]
+            "AM\\ProxyServices\\": ["src", "src/services"],
+            "AM\\ProxyServices\\Interfaces\\": ["src/interfaces"]
         }
     },
     "require": {
         "php": ">=7.0",
-        "andrey-mashukov/container": "^4.0"
+        "andrey-mashukov/container": "^4.0",
+        "andrey-mashukov/http-client-extensions": "^1.0",
+        "ext-mbstring": "*",
+        "ext-SimpleXML": "*",
+        "ext-curl": "*",
+        "ext-libxml": "*",
+        "ext-json": "*",
+        "ext-dom": "*"
     },
     "autoload-dev" : {
         "psr-4" : {
-            "AdService\\": ["tests"]
+            "Tests\\": ["tests"]
         }
     },
     "require-dev": {
@@ -33,10 +41,11 @@
         "sebastian/phpcpd": "^2.0",
         "phpdocumentor/phpdocumentor": "^2.9",
         "mamuz/php-dependency-analysis": "^0.6",
-        "phpunit/phpunit": "^4.8",
+        "phpunit/phpunit": "^5.2",
         "logics/phpunit-extensions": "^0.2||dev-trunk",
         "logics/codesniffer": "^0.1||dev-trunk",
-        "logics/extcheck": "^0.1||dev-trunk"
+        "logics/extcheck": "^0.1||dev-trunk",
+        "ext-dom": "*"
     },
     "prefer-stable": true
 }
